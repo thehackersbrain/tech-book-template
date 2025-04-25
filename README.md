@@ -41,18 +41,18 @@
 
 <table>
   <tr>
-    <td><img src="screenshots/1.png" width="200"/></td>
-    <td><img src="screenshots/2.png" width="200"/></td>
-    <td><img src="screenshots/3.png" width="200"/></td>
+    <td><img src="screenshots/1.png"/></td>
+    <td><img src="screenshots/2.png"/></td>
+    <td><img src="screenshots/3.png"/></td>
   </tr>
   <tr>
-    <td><img src="screenshots/4.png" width="200"/></td>
-    <td><img src="screenshots/5.png" width="200"/></td>
-    <td><img src="screenshots/6.png" width="200"/></td>
+    <td><img src="screenshots/4.png"/></td>
+    <td><img src="screenshots/5.png"/></td>
+    <td><img src="screenshots/6.png"/></td>
   </tr>
   <tr>
-    <td><img src="screenshots/7.png" width="200"/></td>
-    <td><img src="screenshots/8.png" width="200"/></td>
-    <td><img src="screenshots/9.png" width="200"/></td>
+    <td><img src="screenshots/7.png"/></td>
+    <td><img src="screenshots/8.png"/></td>
+    <td><img src="screenshots/9.png"/></td>
   </tr>
 </table>
