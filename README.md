@@ -1,6 +1,6 @@
-# Tech Book $\LaTex$ Template
+# Tech Book LaTex Template 📘
 
-- \LaTex engine: `xelatex`
+- LaTex engine: `xelatex`
 - Dev Server: `latexmk`
 
 > Note: Don't forget to load fonts
