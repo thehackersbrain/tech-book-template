@@ -10,18 +10,18 @@
 > - `Poppins`
 >
 > Either install the fonts system-wide or load via `.ttf` file
-
-Example for loading font locally
-
-```tex
-\setmainfont[
-  Path = fonts/,
-  UprightFont = *-Regular,
-  BoldFont = *-Bold,
-  ItalicFont = *-Italic,
-  BoldItalicFont = *-BoldItalic
-]{SourceSerif4}
-```
+>
+> Example for loading font locally
+>
+> ```tex
+> \setmainfont[
+>   Path = fonts/,
+>   UprightFont = *-Regular,
+>   BoldFont = *-Bold,
+>   ItalicFont = *-Italic,
+>   BoldItalicFont = *-BoldItalic
+> ]{SourceSerif4}
+> ```
 
 ## Commands
 
