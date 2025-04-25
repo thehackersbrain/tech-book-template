@@ -1,11 +1,20 @@
 \chapter{Gentoo Installation}
 
+\begin{chapterdesc}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dic- tum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Pellen- tesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem. Nulla et lectus vestibulum urna fringilla ultrices. Phasellus eu tel- lus sit amet tortor gravida placerat.
+\end{chapterdesc}
+
+\begin{note}
+  This is a point to note here
+\end{note}
+\begin{warning}
+  This is a warning
+\end{warning}
+
 \section{Why Necessary?}
 So most of the times, linux-firmware, initramfs, and kernel itself works hand in hand, but if the kernel is highly customized and configured correctly, then all of these un-necessary packages like linux-firmware and initramfs can be avoided. then comes together to support and fit as different systems as a whole?
 
 Yes, you’ve got the essence of it! Here's how it works in more detail:
-
-\section{The Relationship and The Kernel}
 
 \begin{itemize}
     \item \textbf{Kernel}: The core of the system, providing the basic support of all hardware (CPU, NIC, sound card, etc.). The kernel can be customized and configured in many ways to support specific hardware directly.
@@ -13,18 +22,23 @@ Yes, you’ve got the essence of it! Here's how it works in more detail:
     \item \textbf{initramfs}: A temporary root filesystem loaded into memory during boot, allowing the kernel to initialize hardware, load necessary modules, and access the real root filesystem. It’s especially useful when you have encrypted filesystems, complex RAID configurations, or hardware that requires modules not built into the kernel.
 \end{itemize}
 
-\begin{lstlisting}[caption={Sample Code}, label={lst:sample}]
-def hello_world():
+% \begin{lstlisting}[caption={\smaller Sample Code}, numbers=left]
+\begin{lstlisting}[caption={\smaller Sample Code}]
+def hello_world():     ***#<------ this is a function***
     print("Hello, world!")
 \end{lstlisting}
+
+\begin{quote}
+Focus on a single tree, and you'll miss the entire forest.
+\end{quote}
 
 \section{How They Work Together}
 \begin{enumerate}
   \item \textbf{Kernel and Linux Firmware}:
     \begin{itemize}
-        \item The kernel provides drivers to interact with hardware, but many devices (especially wireless cards, GPUs, etc.) require firmware that is not part of the kernel.
+        \item The kernel\ftn{This is the Kernel, I don't know what i'm doing, just need to make it longer} provides drivers to interact with hardware, but many devices (especially wireless cards, GPUs, etc.) require firmware that is not part of the kernel.
         \item If your hardware is supported by the kernel and doesn't require any additional proprietary firmware, you don’t need to worry about linux-firmware.
-        \item But if you have hardware like certain Wi-Fi or Bluetooth cards, linux-firmware will be necessary to load the required binary blobs during boot\footnote{This is a footnote}.
+        \item But if you have hardware like certain Wi-Fi or Bluetooth cards, linux-firmware will be necessary to load the required binary blobs during boot\ftn{This is a footnote}.
     \end{itemize}
 \item Kernel and initramfs:
     \begin{itemize}
@@ -34,53 +48,32 @@ def hello_world():
     \end{itemize}
 \end{enumerate}
 
-\section{Highly Customized Kernel:}
+\simplefigure{./assets/images/image}{Test Image 1}
+
+\newpage
+
+\section{Highly Customized Kernel}
 If you \textit{customize your kernel} thoroughly by:
 \begin{itemize}
   \item \textit{Including all necessary drivers directly in the kernel}, instead of as modules, and
   \item Ensuring that \textit{your hardware doesn't require any extra firmware},
 \end{itemize}
 
-then \textit{you can avoid both} \textbf{linux-firmware} and \textbf{initramfs}. The kernel will handle all the device initialization on its own, without needing \textit{initramfs} to load modules or extra firmware at boot time.
+then \textit{you can avoid both} \textbf{linux-firmware} and \textbf{initramfs}. The {\icode{kernel}} will handle all the device initialization on its own, without needing \textit{initramfs} to load modules or extra firmware at boot time.
 
-\newpage
 
-\texttt{this is inline code}
-\begin{lstlisting}[caption={Sample Code}, label={lst:sample}]
-┌──(elliot@archlinux) - [~] - [E 192.168.1.2] - [10001]
-└─[$] lspci                                                                                                                                    [1:06:15]
-00:00.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Renoir/Cezanne Root Complex
-00:00.2 IOMMU: Advanced Micro Devices, Inc. [AMD] Renoir/Cezanne IOMMU
-00:01.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Renoir PCIe Dummy Host Bridge
-00:02.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Renoir PCIe Dummy Host Bridge
-00:02.1 PCI bridge: Advanced Micro Devices, Inc. [AMD] Renoir/Cezanne PCIe GPP Bridge
-00:02.2 PCI bridge: Advanced Micro Devices, Inc. [AMD] Renoir/Cezanne PCIe GPP Bridge
-00:02.4 PCI bridge: Advanced Micro Devices, Inc. [AMD] Renoir/Cezanne PCIe GPP Bridge
-00:08.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Renoir PCIe Dummy Host Bridge
-00:08.1 PCI bridge: Advanced Micro Devices, Inc. [AMD] Renoir Internal PCIe GPP Bridge to Bus
-00:08.2 PCI bridge: Advanced Micro Devices, Inc. [AMD] Renoir Internal PCIe GPP Bridge to Bus
-00:14.0 SMBus: Advanced Micro Devices, Inc. [AMD] FCH SMBus Controller (rev 51)
-00:14.3 ISA bridge: Advanced Micro Devices, Inc. [AMD] FCH LPC Bridge (rev 51)
-00:18.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Cezanne Data Fabric; Function 0
-00:18.1 Host bridge: Advanced Micro Devices, Inc. [AMD] Cezanne Data Fabric; Function 1
-00:18.2 Host bridge: Advanced Micro Devices, Inc. [AMD] Cezanne Data Fabric; Function 2
-00:18.3 Host bridge: Advanced Micro Devices, Inc. [AMD] Cezanne Data Fabric; Function 3
-00:18.4 Host bridge: Advanced Micro Devices, Inc. [AMD] Cezanne Data Fabric; Function 4
-00:18.5 Host bridge: Advanced Micro Devices, Inc. [AMD] Cezanne Data Fabric; Function 5
-00:18.6 Host bridge: Advanced Micro Devices, Inc. [AMD] Cezanne Data Fabric; Function 6
-00:18.7 Host bridge: Advanced Micro Devices, Inc. [AMD] Cezanne Data Fabric; Function 7
-01:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168/8211/8411 PCI Express Gigabit Ethernet Controller (rev 15)
-02:00.0 Network controller: Realtek Semiconductor Co., Ltd. RTL8852BE PCIe 802.11ax Wireless Network Controller
-03:00.0 Non-Volatile memory controller: Phison Electronics Corporation PS5019-E19 PCIe4 NVMe Controller (DRAM-less) (rev 01)
-04:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Barcelo (rev c2)
-04:00.1 Audio device: Advanced Micro Devices, Inc. [AMD/ATI] Renoir Radeon High Definition Audio Controller
-04:00.2 Encryption controller: Advanced Micro Devices, Inc. [AMD] Family 17h (Models 10h-1fh) Platform Security Processor
-04:00.3 USB controller: Advanced Micro Devices, Inc. [AMD] Renoir/Cezanne USB 3.1
-04:00.4 USB controller: Advanced Micro Devices, Inc. [AMD] Renoir/Cezanne USB 3.1
-04:00.5 Multimedia controller: Advanced Micro Devices, Inc. [AMD] ACP/ACP3X/ACP6x Audio Coprocessor (rev 01)
-04:00.6 Audio device: Advanced Micro Devices, Inc. [AMD] Family 17h/19h HD Audio Controller
-05:00.0 SATA controller: Advanced Micro Devices, Inc. [AMD] FCH SATA Controller [AHCI mode] (rev 81)
-05:00.1 SATA controller: Advanced Micro Devices, Inc. [AMD] FCH SATA Controller [AHCI mode] (rev 81)
-┌──(elliot@archlinux) - [~] - [E 192.168.1.2] - [10002]
-└─[$]
+\texttt{\firamonofont this is inline code}
+\begin{lstlisting}[caption={\smaller Sample Code}]
+elliot@archlinux ~ $ cat /etc/os-release                                                     [9:53:41]
+NAME="Arch Linux"
+PRETTY_NAME="Arch Linux"
+ID=arch
+BUILD_ID=rolling
+ANSI_COLOR="38;2;23;147;209"
+HOME_URL="https://archlinux.org/"
+DOCUMENTATION_URL="https://wiki.archlinux.org/"
+SUPPORT_URL="https://bbs.archlinux.org/"
+BUG_REPORT_URL="https://gitlab.archlinux.org/groups/archlinux/-/issues"
+PRIVACY_POLICY_URL="https://terms.archlinux.org/docs/privacy-policy/"
+LOGO=archlinux-logo
 \end{lstlisting}

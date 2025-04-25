@@ -1,84 +1,82 @@
-% This code snippet is a LaTeX preamble that loads various packages
-% for typesetting mathematical content.
+\usepackage[2.0, compress]{bxpdfver} %% set PDF version to 2.0
 
-% The amsfonts package provides additional mathematical fonts.
-\usepackage{amsfonts}
-
-% The amsmath package enhances the typesetting of mathematical formulas
-% and provides various additional math environments and symbols.
-\usepackage{amsmath}
-
-% The amssymb package provides a collection of additional mathematical symbols.
-\usepackage{amssymb}
-
-% The 'amsthm' package provides enhanced theorem environments.
-\usepackage{amsthm}
-
-% The lmodern package sets the font used in the document to Latin Modern.
-% It is a modernized version of the Computer Modern font family.
-\usepackage{lmodern}
-
-% The courierten package sets the font for the typewriter (monospaced) text
-% to Courier with enhanced kerning.
-\usepackage{courierten}
-
-% The biolinum package sets the font for sans-serif text to Biolinum,
-% a sans-serif font with a distinct style.
-\usepackage{biolinum}
-
-% The mathalpha package is used to customize the math alphabet in the document.
-% Here, it sets the calligraphic math alphabet to "boondoxo".
-% Note: This package requires the "boondox" font family.
-\usepackage[cal = boondoxo]{mathalpha}
-
-% The geometry package is used to customize the page margins.
 % \usepackage[rmargin = 3.85cm, lmargin = 3.85cm, bmargin = 4cm, tmargin = 4cm]{geometry}
 \usepackage[paperwidth=7in, paperheight=9.25in, margin=1in]{geometry}
 
-% The algorithm2e package provides algorithms and customizable algorithm environments.
-\usepackage[algoruled]{algorithm2e}
+\usepackage{amsfonts} %% additional math fonts
+\usepackage{amsmath} %% math library
+\usepackage{amssymb} %% collection of additional math symbols
+\usepackage{amsthm} %% for theorem
+\usepackage{fancyhdr} %% customization of headers and footers.
+\usepackage[bottom, hang]{footmisc} %% provides more footnote options and symbols.
+\usepackage{graphicx} %% for including images in the document.
+\usepackage{mdframed} %% provides customizable framed boxes.
+\usepackage{xcolor} %% allows defining and using colors in the document.
 
-% The babel package is used for multilingual support.
-\usepackage[british]{babel}
+\usepackage[algoruled]{algorithm2e} %% algorithms and customizable algorithm environments.
+\usepackage[english]{babel} %% for multilingual support.
+\usepackage[cal = boondoxo]{mathalpha} %% customize the math alphabet
+\usepackage{booktabs} %% enhances the quality of tables
+\usepackage{csquotes} %% advanced quoting facilities.
+\usepackage[onehalfspacing]{setspace} %% sets spacing between lines
+\usepackage{listingsutf8} %% used in code block
+\usepackage{float} %% improves the handling of floating elements such as figures and tables.
+\usepackage{enumitem} %% customize the formatting of itemized and enumerated lists.
+\usepackage[babel = true, final]{microtype} %% improves the typesetting quality by adjusting character spacing.
+\usepackage{parskip} %% sets the space between paragraphs.
+\usepackage{ragged2e} %% additional options for paragraph alignment.
+\usepackage{caption}
 
-% The booktabs package enhances the quality of tables in the document.
-\usepackage{booktabs}
+\usepackage{fontspec} %% for loading custom fonts
+\usepackage{lmodern} %% latin modern font
+\usepackage{courierten} %% typewriter monospaced fonts
+\usepackage{biolinum} %% font for sans-serif text to Biolinum
 
-% The bxpdfver package is used to set the PDF version to 2.0.
-\usepackage[2.0, compress]{bxpdfver}
+\setmainfont[Scale=1.10]{Libertinus Serif} %% main body font
+\newfontfamily\firamonofont[Scale=0.85, Contextuals=Alternate]{FiraMono Nerd Font} %% code block font
+\newfontfamily\jbfont[Scale=MatchLowercase]{JetBrainsMono Nerd Font}
 
-% The csquotes package provides advanced quoting facilities.
-\usepackage{csquotes}
+\usepackage[bookmarks = true, citecolor = black, colorlinks = true, frenchlinks = true, linkcolor = black, pdfencoding = unicode, urlcolor = black]{hyperref}
+\hypersetup{
+    pdftitle = {Tech Book},
+    pdfauthor = {Gaurav Raj},
+    pdfsubject = {computer science},
+    pdfkeywords = {computer science}
+ } %% enables hyperlinks and provides options for PDF metadata and link colors.
 
-% The setspace package is used to set the spacing between lines in the document.
-\usepackage[onehalfspacing]{setspace}
 
-% The enumitem package is used to customize the formatting of itemized and enumerated lists.
-\usepackage{enumitem}
+% The enumitem package is used to
 \setlist[itemize]{leftmargin=*, nosep, noitemsep}
 \setlist[enumerate]{leftmargin=*, nosep, noitemsep, % label=(\arabic*)
 }
 
-\usepackage{listings}
+% \renewcommand{\texttt}[1]{\textcolor{black!90}{\firamonofont #1}}
+% \renewcommand{\texttt}[1]{\firamonofont #1}
+% \renewcommand{\textbf}[1]{\jbfont #1}
+\newcommand{\icode}[1]{\jbfont #1}
+\newcommand{\ftn}[1]{\footnote{\textit{#1}}}
 
-% Set up the listings style
+
+% Set up the code block style
 \lstset{
     frame=lines, % Adds a frame around the code block
     showstringspaces=false, % Prevents marking spaces within strings
     tabsize=4, % Sets the tab size to 4 spaces
     title=\lstname, % Sets the title to the filename
     numbers=none, % Disables line numbering
+    numberstyle=\smaller\color{black!90},
     caption={}, % Caption is empty by default, can be added if needed
     literate={\ }{{\ }}1{"}{\textquotedbl}1, % Handles space and quote formatting
     escapeinside={(@}{@)}, % Allows inserting LaTeX commands within code
     captionpos=b, % Places caption at the bottom of the code block
-    basicstyle=\ttfamily, % Uses typewriter font for code
+    % basicstyle=\ttfamily, % Uses typewriter font for code
+    basicstyle=\firamonofont\small, % Uses typewriter font for code
     columns=fullflexible, % Makes column width flexible
     moredelim=[is][\bfseries]{***}{***}, % Bold text inside ***
     moredelim=[is][\itshape]{___}{___}, % Italic text inside ___
     moredelim=[is][\bfseries\itshape]{&&&}{&&&}, % Bold and italic inside &&&
-    literate={_}{\_}1
-    aboveskip=8pt, % Adds vertical space above the code block
+    literate={_}{\_}1,
+    aboveskip=20pt, % Adds vertical space above the code block
     breaklines=true, % Ensures long lines of code wrap correctly
     breakatwhitespace=true, % Ensures breaking at spaces
     xleftmargin=20pt, % Adds left margin for code block
@@ -86,10 +84,7 @@
 }
 
 
-% The fancyhdr package allows customization of headers and footers.
-\usepackage{fancyhdr}
 \addtolength{\footskip}{12pt}
-
 \pagestyle{fancy}
 \renewcommand{\sectionmark}[1]{\markright{#1}}
 \fancyhead{}
@@ -100,41 +95,6 @@
 % \fancyfoot[LO, RE]{\normalfont\rightmark}
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0.5pt}
-
-% The float package improves the handling of floating elements such as figures and tables.
-\usepackage{float}
-
-% The footmisc package provides more footnote options and symbols.
-\usepackage[bottom, hang]{footmisc}
-
-% The graphicx package is used for including images in the document.
-\usepackage{graphicx}
-
-% The hyperref package enables hyperlinks and provides options for PDF metadata and link colors.
-\usepackage[bookmarks = true, citecolor = black, colorlinks = true, frenchlinks = true, linkcolor = black, pdfencoding = unicode, urlcolor = black]{hyperref}
-\hypersetup{
-    pdftitle = {Name of the Book},
-    pdfauthor = {First Author et al.},
-    pdfsubject = {computer science},
-    pdfkeywords = {computer science}
- }
-
-% The luainputenc package allows using Unicode characters with LuaLaTeX.
-\usepackage[utf8x]{luainputenc}
-
-% The mdframed package provides customizable framed boxes.
-\usepackage{mdframed}
-
-% The microtype package improves the typesetting quality by adjusting character spacing.
-\usepackage[babel = true, final]{microtype}
-
-% The parskip package sets the space between paragraphs.
-\usepackage{parskip}
-
-% The ragged2e package provides additional options for paragraph alignment.
-\usepackage{ragged2e}
-
-% The titlesec package is used for customizing the formatting of section headings.
 
 % The \titleformat command is used to customize the format of a specific sectioning command.
 % Here, we are customizing the format of chapter headings.
@@ -157,17 +117,15 @@
 % The after-code is used to add vertical space (1ex) and draw another horizontal line (\titlerule) after the chapter title.
 
 \usepackage{titlesec}
-
-
 \titleformat{\chapter}[display]
   {\bfseries\huge}
   {\filright \bf{\chaptertitlename} \Huge\thechapter}
   {1ex}
   {\titlerule\vspace{1ex}\filleft}
+  % [\vspace{1ex}\titlerule]
   [\vspace{1ex}\titlerule]
 
-% The xcolor package allows defining and using colors in the document.
-\usepackage{xcolor}
+% The xcolor package
 
 % The secnumdepth counter controls the level of section numbering depth.
 % Here, it is set to 5, which means all sectional units up to \subparagraph will be numbered.
@@ -176,6 +134,10 @@
 % The tocdepth counter controls the level of section entries displayed in the table of contents.
 % Here, it is set to 5, which means all sectional units up to \subparagraph will be included in the table of contents.
 \setcounter{tocdepth}{5}
+
+\titleformat{\section}[block]{\normalfont\Large\bfseries}{}{0pt}{\hspace*{-1.5em}}
+\titleformat{\subsection}[block]{\normalfont\large\bfseries}{}{0pt}{\hspace*{-1.2em}}
+\titleformat{\subsubsection}[block]{\normalfont\normalsize\bfseries}{}{0pt}{\hspace*{-0.9em}}
 
 % The following command defines a new command called \undersign.
 % When you use \undersign in the document, it will produce a specific formatted text.
@@ -300,3 +262,37 @@
 \providecommand{\solutionname}{Solution}
 \providecommand{\theoremname}{Theorem}
 
+
+%% Environments
+\newcommand{\sonote}[1]{\textsf{#1}}
+
+\newenvironment{chapterdesc}
+{\begingroup\large}
+{\endgroup}
+
+\newenvironment{aside}[1]{%
+  \list{\makebox[0pt][r]{\jbfont \fontsize{7.5pt}{12pt}
+    \colorbox{black}{\textcolor{white}{\sonote{#1}}}\hspace{2em}}}%
+  {\listparindent=0pt
+   \topsep=9pt
+   \itemindent=0pt
+   \rightmargin=0pt
+   \leftmargin=0pt
+   \labelwidth=0pt
+   \labelsep=0pt}%
+  \item\itshape
+}{%
+  \vspace{-3pt}
+  \endlist
+}
+
+\newenvironment{note}{\begin{aside}{NOTE}}{\end{aside}}
+\newenvironment{warning}{\begin{aside}{WARNING}}{\end{aside}}
+
+\newcommand{\simplefigure}[2]{
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{#1}
+    \caption{\textit{#2}}
+  \end{figure}
+}
