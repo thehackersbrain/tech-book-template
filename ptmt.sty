@@ -32,9 +32,19 @@
 \usepackage{courierten} %% typewriter monospaced fonts
 \usepackage{biolinum} %% font for sans-serif text to Biolinum
 
-\setmainfont[Scale=1.10]{Libertinus Serif} %% main body font
+\defaultfontfeatures{Ligatures=TeX}
+% \setmainfont[Scale=1.10]{Libertinus Serif} %% main body font
 \newfontfamily\firamonofont[Scale=0.9, Contextuals=Alternate]{FiraMono Nerd Font} %% code block font
 \newfontfamily\jbfont[Scale=MatchLowercase]{JetBrainsMono Nerd Font}
+\newfontfamily\pfont{Poppins}
+
+\setmainfont[
+  Path = fonts/,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]{SourceSerif4}
 
 \usepackage[bookmarks = true, citecolor = black, colorlinks = true, frenchlinks = true, linkcolor = black, pdfencoding = unicode, urlcolor = black]{hyperref}
 \hypersetup{
@@ -55,6 +65,8 @@
 % \renewcommand{\textbf}[1]{\jbfont #1}
 \newcommand{\icode}[1]{\jbfont #1}
 \newcommand{\ftn}[1]{\footnote{\textit{#1}}}
+
+\setlength{\parindent}{2em} %% Paragraph Indentation
 
 
 % Set up the code block style
@@ -118,8 +130,8 @@
 
 \usepackage{titlesec}
 \titleformat{\chapter}[display]
-  {\bfseries\huge}
-  {\filright \bf{\chaptertitlename} \Huge\thechapter}
+  {\bfseries\huge\pfont}
+  {\filright \bf{\pfont\chaptertitlename} \pfont\Huge\thechapter}
   {1ex}
   {\titlerule\vspace{1ex}\filleft}
   % [\vspace{1ex}\titlerule]
@@ -135,9 +147,9 @@
 % Here, it is set to 5, which means all sectional units up to \subparagraph will be included in the table of contents.
 \setcounter{tocdepth}{5}
 
-\titleformat{\section}[block]{\normalfont\Large\bfseries}{}{0pt}{\hspace*{-1.5em}}
-\titleformat{\subsection}[block]{\normalfont\large\bfseries}{}{0pt}{\hspace*{-1.2em}}
-\titleformat{\subsubsection}[block]{\normalfont\normalsize\bfseries}{}{0pt}{\hspace*{-0.9em}}
+\titleformat{\section}[block]{\normalfont\pfont\Large\bfseries}{}{0pt}{\hspace*{-1.5em}}
+\titleformat{\subsection}[block]{\normalfont\pfont\large\bfseries}{}{0pt}{\hspace*{-1.2em}}
+\titleformat{\subsubsection}[block]{\normalfont\pfont\normalsize\bfseries}{}{0pt}{\hspace*{-0.9em}}
 
 % The following command defines a new command called \undersign.
 % When you use \undersign in the document, it will produce a specific formatted text.
