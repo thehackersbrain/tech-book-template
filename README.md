@@ -1,4 +1,4 @@
-# Tech Book \LaTex Template
+# Tech Book $\LaTex$ Template
 
 - \LaTex engine: `xelatex`
 - Dev Server: `latexmk`
