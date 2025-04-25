@@ -32,7 +32,8 @@
 \usepackage[cal = boondoxo]{mathalpha}
 
 % The geometry package is used to customize the page margins.
-\usepackage[rmargin = 3.85cm, lmargin = 3.85cm, bmargin = 4cm, tmargin = 4cm]{geometry}
+% \usepackage[rmargin = 3.85cm, lmargin = 3.85cm, bmargin = 4cm, tmargin = 4cm]{geometry}
+\usepackage[paperwidth=7in, paperheight=9.25in, margin=1in]{geometry}
 
 % The algorithm2e package provides algorithms and customizable algorithm environments.
 \usepackage[algoruled]{algorithm2e}
@@ -55,28 +56,62 @@
 % The enumitem package is used to customize the formatting of itemized and enumerated lists.
 \usepackage{enumitem}
 \setlist[itemize]{leftmargin=*, nosep, noitemsep}
-\setlist[enumerate]{leftmargin=*, nosep, noitemsep, label=(\arabic*)}
+\setlist[enumerate]{leftmargin=*, nosep, noitemsep, % label=(\arabic*)
+}
+
+\usepackage{listings}
+
+% Set up the listings style
+\lstset{
+    frame=lines, % Adds a frame around the code block
+    showstringspaces=false, % Prevents marking spaces within strings
+    tabsize=4, % Sets the tab size to 4 spaces
+    title=\lstname, % Sets the title to the filename
+    numbers=none, % Disables line numbering
+    caption={}, % Caption is empty by default, can be added if needed
+    literate={\ }{{\ }}1{"}{\textquotedbl}1, % Handles space and quote formatting
+    escapeinside={(@}{@)}, % Allows inserting LaTeX commands within code
+    captionpos=b, % Places caption at the bottom of the code block
+    basicstyle=\ttfamily, % Uses typewriter font for code
+    columns=fullflexible, % Makes column width flexible
+    moredelim=[is][\bfseries]{***}{***}, % Bold text inside ***
+    moredelim=[is][\itshape]{___}{___}, % Italic text inside ___
+    moredelim=[is][\bfseries\itshape]{&&&}{&&&}, % Bold and italic inside &&&
+    literate={_}{\_}1
+    aboveskip=8pt, % Adds vertical space above the code block
+    breaklines=true, % Ensures long lines of code wrap correctly
+    breakatwhitespace=true, % Ensures breaking at spaces
+    xleftmargin=20pt, % Adds left margin for code block
+    xrightmargin=20pt % Adds right margin for code block
+}
+
 
 % The fancyhdr package allows customization of headers and footers.
 \usepackage{fancyhdr}
+\addtolength{\footskip}{12pt}
+
 \pagestyle{fancy}
 \renewcommand{\sectionmark}[1]{\markright{#1}}
+\fancyhead{}
 \fancyfoot{}
-\fancyhead[LE, RO]{\thepage}
-\fancyhead[LO, RE]{\normalfont\rightmark}
+\fancyhead[LE, RO]{\smaller\leftmark}
+\fancyfoot[LE]{{\normalsize\textbf{\thepage}}\ \ \ \smaller{\color{black!70}\rightmark}}
+\fancyfoot[RO]{\smaller{\color{black!70}\rightmark}\ \ \ \ \normalsize\textbf{\thepage}}
+% \fancyfoot[LO, RE]{\normalfont\rightmark}
 \renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
 
 % The float package improves the handling of floating elements such as figures and tables.
 \usepackage{float}
 
 % The footmisc package provides more footnote options and symbols.
-\usepackage[bottom, hang, symbol]{footmisc}
+\usepackage[bottom, hang]{footmisc}
 
 % The graphicx package is used for including images in the document.
 \usepackage{graphicx}
 
 % The hyperref package enables hyperlinks and provides options for PDF metadata and link colors.
-\usepackage[bookmarks = true, citecolor = blue, colorlinks = true, frenchlinks = true, linkcolor = blue, pdfencoding = unicode, urlcolor = blue]{hyperref}
+\usepackage[bookmarks = true, citecolor = black, colorlinks = true, frenchlinks = true, linkcolor = black, pdfencoding = unicode, urlcolor = black]{hyperref}
 \hypersetup{
     pdftitle = {Name of the Book},
     pdfauthor = {First Author et al.},
@@ -122,6 +157,8 @@
 % The after-code is used to add vertical space (1ex) and draw another horizontal line (\titlerule) after the chapter title.
 
 \usepackage{titlesec}
+
+
 \titleformat{\chapter}[display]
   {\bfseries\huge}
   {\filright \bf{\chaptertitlename} \Huge\thechapter}
@@ -262,3 +299,4 @@
 \providecommand{\remarkname}{Remark}
 \providecommand{\solutionname}{Solution}
 \providecommand{\theoremname}{Theorem}
+

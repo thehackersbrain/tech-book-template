@@ -1,20 +1,12 @@
-% Document class with options: openright - chapters start on right-hand pages, twoside - two-sided layout, british - using British English language settings.
-\documentclass[openright, twoside, british]{book}
+\documentclass[openright, twoside, us]{book}
+\usepackage{blindtext} %% for generating dummy text
+\usepackage{ptmt} %% presumably for formatting.
+\usepackage{lipsum}
 
-% Load the blindtext package, which provides commands for generating dummy text.
-\usepackage{blindtext}
-
-% Load the ptmt package, presumably for formatting.
-\usepackage{ptmt}
-
-% Set the title of the book.
-\title{Name of the Book}
-
-% Set the authors of the book (multiple authors separated by \and).
-\author{First Author \and Second Author}
-
-% Set the date to the current date.
-\date{\today}
+% Author Content
+\input{./deps/data}
+\title{\bookTitle}
+\author{\authorF \and \authorS} % multiple authors separated by \and
 
 % Begin the document.
 \begin{document}
@@ -22,7 +14,6 @@
 % Front matter section.
 \frontmatter
 
-% Include the title page, which is located in the FrontMatter subfolder.
 \include{./FrontMatter/titlepage}
 
 % Create the book's title page.
@@ -54,6 +45,8 @@
 
 % Include Chapter 1 from the MainMatter subfolder.
 \include{./MainMatter/Chapter1}
+\include{./MainMatter/Chapter2}
+\include{./MainMatter/Chapter3}
 
 % Appendices section.
 \appendix
